@@ -45,17 +45,17 @@ public class MainClass {
 
         List<AuditLog> auditLogs = new ArrayList<>();
         List<AuditLog> auditLogs2 = new ArrayList<>();
-        AuditLog log1 = new AuditLog(1, "Create", format.parse("12/10/2017 12:20") , null);
-        AuditLog log2 = new AuditLog(2, "Create", format.parse("12/10/2017 12:21") , null);
-        AuditLog log3 = new AuditLog(3, "Update", null, format.parse("12/10/2017 12:24"));
-        AuditLog log4 = new AuditLog(4, "Update", null, format.parse("12/10/2017 12:25"));
-        AuditLog log5 = new AuditLog(5, "Update", null, format.parse("12/10/2017 12:25"));
-        AuditLog log6 = new AuditLog(6, "Create", format.parse("12/10/2017 12:26") , null);
-        AuditLog log7 = new AuditLog(7, "Update", null,format.parse("12/10/2017 12:26"));
-        AuditLog log8 = new AuditLog(8, "Update", null,format.parse("12/10/2017 12:23"));
-        AuditLog log9 = new AuditLog(9, "Create",format.parse("12/10/2017 12:28"), null);
-        AuditLog log10 = new AuditLog(10, "Update",format.parse("12/10/2017 12:28"), null);
-        AuditLog log11 = new AuditLog(11, "Create", format.parse("12/10/2017 12:23"), null);
+        AuditLog log1 = new AuditLog(1, "Create", format.parse("12/10/2017 12:20") , null, "Jhon", null);
+        AuditLog log2 = new AuditLog(2, "Create", format.parse("12/10/2017 12:21") , null, "Jhon", null);
+        AuditLog log3 = new AuditLog(3, "Update", null, format.parse("12/10/2017 12:24"), null, "Jhon");
+        AuditLog log4 = new AuditLog(4, "Update", null, format.parse("12/10/2017 12:25"), null, "Peter");
+        AuditLog log5 = new AuditLog(5, "Update", null, format.parse("12/10/2017 12:25"), null, "Jhon");
+        AuditLog log6 = new AuditLog(6, "Create", format.parse("12/10/2017 12:26") , null, "Peter", null);
+        AuditLog log7 = new AuditLog(7, "Update", null,format.parse("12/10/2017 12:26"),null, "Peter");
+        AuditLog log8 = new AuditLog(8, "Update", null,format.parse("12/10/2017 12:23"), null,"Peter");
+        AuditLog log9 = new AuditLog(9, "Create",format.parse("12/10/2017 12:28"), null, "Jhon", null);
+        AuditLog log10 = new AuditLog(10, "Update",format.parse("12/10/2017 12:28"), null,null, "Jhon");
+        AuditLog log11 = new AuditLog(11, "Create", format.parse("12/10/2017 12:23"), null, "Jhon", null);
 
         auditLogs.add(log1);
         auditLogs.add(log2);
@@ -78,8 +78,8 @@ public class MainClass {
             if(log.getCreatedTimeStamp() != null)
                 System.out.print(""+format.format(log.getCreatedTimeStamp())+"\tnull ");
             if(log.getModifiedTimeStamp() != null)
-                System.out.println("null \t "+format.format(log.getModifiedTimeStamp()));
-
+                System.out.print("null \t "+format.format(log.getModifiedTimeStamp()));
+            System.out.print("\t "+log.getCreatedBy()+"\t "+log.getModifiedBy()+"\t ");
             System.out.println();
 
         }

@@ -8,12 +8,17 @@ public class AuditLog implements Comparable<AuditLog>{
     String action;
     Date createdTimeStamp;
     Date modifiedTimeStamp;
+    String createdBy;
+    String modifiedBy;
 
-    public AuditLog(int id, String action, Date createdTimeStamp, Date modifiedTimeStamp) {
+
+    public AuditLog(int id, String action, Date createdTimeStamp, Date modifiedTimeStamp, String createdBy, String modifiedBy) {
         this.id = id;
         this.action = action;
         this.createdTimeStamp = createdTimeStamp;
         this.modifiedTimeStamp = modifiedTimeStamp;
+        this.createdBy = createdBy;
+        this.modifiedBy = modifiedBy;
     }
 
     public String getAction() {
@@ -48,6 +53,22 @@ public class AuditLog implements Comparable<AuditLog>{
         this.id = id;
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public String getModifiedBy() {
+        return modifiedBy;
+    }
+
+    public void setModifiedBy(String modifiedBy) {
+        this.modifiedBy = modifiedBy;
+    }
+
     @Override
     public int compareTo(AuditLog o) {
         /*Create - create*/
@@ -64,7 +85,12 @@ public class AuditLog implements Comparable<AuditLog>{
             return o.getCreatedTimeStamp().compareTo(this.getModifiedTimeStamp());
         }
         else{
-            return o.getModifiedTimeStamp().compareTo(this.getModifiedTimeStamp());
+            int i = o.getModifiedTimeStamp().compareTo(this.getModifiedTimeStamp());
+            if(i == 0){
+                return this.getModifiedBy().compareTo(o.getModifiedBy());
+            }
+            return i;
+
         }
 
     }
